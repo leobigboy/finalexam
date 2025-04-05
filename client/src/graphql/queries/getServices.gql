@@ -1,0 +1,39 @@
+// client/src/graphql/queries/getServices.gql.ts
+import { gql } from '@apollo/client';
+
+export const GET_SERVICES_QUERY = gql`
+  query GetServices(
+    $skip: Int
+    $take: Int
+    $sortBy: ServiceSortInput
+    $filterByPrice: PriceFilterInput
+    $searchQuery: String
+  ) {
+    services(
+      skip: $skip
+      take: $take
+      sortBy: $sortBy
+      filterByPrice: $filterByPrice
+      searchQuery: $searchQuery
+    ) {
+      items {
+        id
+        name
+        description
+        price
+        images { id url } # Cần id để làm key
+      }
+      pageInfo {
+        totalItems
+        itemCount
+        itemsPerPage
+        totalPages
+        currentPage
+        hasNextPage
+        hasPreviousPage
+      }
+    }
+  }
+`;
+
+// Tương tự cho GET_SERVICE_DETAIL, LOGIN_MUTATION, UPDATE_SERVICE_MUTATION, etc.

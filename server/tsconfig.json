@@ -1,0 +1,40 @@
+// server/tsconfig.json
+{
+  "compilerOptions": {
+    /* Language and Environment */
+    "target": "es2016",             // Phiên bản JavaScript output
+    "lib": ["es2016", "dom"],     // Thư viện đi kèm (dom có thể không cần thiết cho backend)
+
+    /* Modules */
+    "module": "commonjs",           // Định dạng module cho Node.js
+    "rootDir": "./",                // <<< ĐÃ SỬA: Thư mục gốc là thư mục server hiện tại
+    "resolveJsonModule": true,      // Cho phép import file .json
+
+    /* JavaScript Support */
+    "allowJs": true,                // Cho phép file JavaScript (nếu có)
+
+    /* Emit */
+    "outDir": "./dist",             // Thư mục output cho file đã biên dịch
+
+    /* Interop Constraints */
+    "esModuleInterop": true,        // Cải thiện tương thích giữa CommonJS và ES Modules
+    "forceConsistentCasingInFileNames": true, // Đảm bảo viết hoa/thường đúng trong tên file import
+
+    /* Type Checking */
+    "strict": true,                 // Bật tất cả các kiểm tra kiểu nghiêm ngặt (khuyến nghị)
+    "noImplicitAny": true,          // Báo lỗi nếu có kiểu 'any' ngầm định (nên giữ)
+
+    /* Completeness */
+    "skipLibCheck": true            // Bỏ qua kiểm tra kiểu của các file .d.ts trong thư viện (tăng tốc độ build)
+  },
+  // Chỉ định rõ ràng các file/thư mục cần biên dịch khi chạy lệnh build chính (tsc)
+  "include": [
+    "src/**/*"                    // <<< THÊM VÀO: Chỉ biên dịch các file .ts trong thư mục src
+, "../client/src/apolloClient.ts"  ],
+  // Loại trừ các thư mục không cần thiết
+  "exclude": [
+    "node_modules",               // <<< THÊM VÀO: Luôn loại trừ node_modules
+    "dist"                        // <<< THÊM VÀO: Loại trừ thư mục output
+    // Không cần loại trừ "prisma" ở đây vì "include" đã giới hạn trong "src"
+  ]
+}

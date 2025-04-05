@@ -1,0 +1,6 @@
+node_modules
+# Keep environment variables out of version control
+.env
+echo ".env" >> .gitignore
+echo "node_modules/" >> .gitignore
+echo "dist/" >> .gitignore
